@@ -13,6 +13,7 @@ The app is built with Python, TensorFlow, and Streamlit, allowing interactive ex
 -Tabular display of predicted prices for next 6 months
 
 ## Folder Structure
+```
   housing-forecast/
   ├─ app.py                  # Streamlit app
   ├─ notebook/               # Optional Jupyter notebooks
@@ -22,7 +23,7 @@ The app is built with Python, TensorFlow, and Streamlit, allowing interactive ex
   ├─ requirements.txt
   ├─ README.md
   └─ .gitignore
-
+```
 ## Setup & Installation
 
 ### 1. Clone this repository
