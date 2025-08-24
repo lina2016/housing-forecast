@@ -10,9 +10,6 @@ venv/
 # Jupyter
 .ipynb_checkpoints/
 
-# Data (avoid pushing large Zillow CSVs)
-data/*
-!data/.keep
 
 # OS
 .DS_Store
