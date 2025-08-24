@@ -80,15 +80,77 @@ def forecast_series(ts):
 # ---------------- UI ----------------
 st.title("🏠 Housing Price Forecast Explorer")
 
+# --- State code to name mapping ---
+state_name_map = {
+    "AL": "Alabama",
+    "AK": "Alaska",
+    "AZ": "Arizona",
+    "AR": "Arkansas",
+    "CA": "California",
+    "CO": "Colorado",
+    "CT": "Connecticut",
+    "DE": "Delaware",
+    "FL": "Florida",
+    "GA": "Georgia",
+    "HI": "Hawaii",
+    "ID": "Idaho",
+    "IL": "Illinois",
+    "IN": "Indiana",
+    "IA": "Iowa",
+    "KS": "Kansas",
+    "KY": "Kentucky",
+    "LA": "Louisiana",
+    "ME": "Maine",
+    "MD": "Maryland",
+    "MA": "Massachusetts",
+    "MI": "Michigan",
+    "MN": "Minnesota",
+    "MS": "Mississippi",
+    "MO": "Missouri",
+    "MT": "Montana",
+    "NE": "Nebraska",
+    "NV": "Nevada",
+    "NH": "New Hampshire",
+    "NJ": "New Jersey",
+    "NM": "New Mexico",
+    "NY": "New York",
+    "NC": "North Carolina",
+    "ND": "North Dakota",
+    "OH": "Ohio",
+    "OK": "Oklahoma",
+    "OR": "Oregon",
+    "PA": "Pennsylvania",
+    "RI": "Rhode Island",
+    "SC": "South Carolina",
+    "SD": "South Dakota",
+    "TN": "Tennessee",
+    "TX": "Texas",
+    "UT": "Utah",
+    "VT": "Vermont",
+    "VA": "Virginia",
+    "WA": "Washington",
+    "WV": "West Virginia",
+    "WI": "Wisconsin",
+    "WY": "Wyoming"
+}
+
+
 # --- State dropdown ---
-states = sorted(df_long["StateName"].dropna().unique())
+state_codes = sorted(df_long["StateName"].dropna().unique())
 default_state = "CA"
 
-state = st.selectbox(
+# Create display names for dropdown
+state_display_names = [state_name_map.get(code, code) for code in state_codes]
+
+# Show full names but keep code as value
+selected_display = st.selectbox(
     "Select a State",
-    states,
-    index=states.index(default_state) if default_state in states else 0
+    state_display_names,
+    index=state_codes.index(default_state) if default_state in state_codes else 0
 )
+
+# Reverse lookup to get the selected code
+state = next(code for code, name in state_name_map.items() if name == selected_display)
 
 # --- County dropdown ---
 counties = sorted(df_long[df_long["StateName"] == state]["RegionName"].dropna().unique())
@@ -99,7 +161,6 @@ county = st.selectbox(
     counties,
     index=counties.index(default_county) if default_county in counties else 0
 )
-
 
 # Filter selected county data
 df_sel = df_long[(df_long["StateName"] == state) & (df_long["RegionName"] == county)]
