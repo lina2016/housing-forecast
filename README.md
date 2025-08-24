@@ -13,30 +13,30 @@ The app is built with Python, TensorFlow, and Streamlit, allowing interactive ex
 -Tabular display of predicted prices for next 6 months
 
 ## Folder Structure
-housing-forecast/
-├─ app.py                  # Streamlit app
-├─ notebook/               # Optional Jupyter notebooks
-│  └─ state_county_forecast.ipynb
-├─ data/                   # Place your CSV files here (ignored by git)
-│  └─ County_ZHVI_AllHomes.csv
-├─ requirements.txt
-├─ README.md
-└─ .gitignore
+  housing-forecast/
+  ├─ app.py                  # Streamlit app
+  ├─ notebook/               # Optional Jupyter notebooks
+  │  └─ state_county_forecast.ipynb
+  ├─ data/                   # Place your CSV files here (ignored by git)
+  │  └─ County_ZHVI_AllHomes.csv
+  ├─ requirements.txt
+  ├─ README.md
+  └─ .gitignore
 
 ## Setup & Installation
 
-1. ### Clone this repository
+### 1. Clone this repository
 git clone https://github.com/<YOUR_USERNAME>/housing-forecast.git
 cd housing-forecast
-2. ### Create a virtual environment (recommended)
+### 2. Create a virtual environment (recommended)
 python -m venv .venv
-# Activate on Windows
+#### Activate on Windows
 .venv\Scripts\activate
-# Activate on macOS/Linux
+#### Activate on macOS/Linux
 source .venv/bin/activate
-3. ### Install dependencies
+### 3. Install dependencies
 pip install -r requirements.txt
-4. ### Download Zillow County-level ZHVI data
+### 4. Download Zillow County-level ZHVI data
 - Go to Zillow Research Data
 - Download the County ZHVI All Homes CSV
 - Place it in the data/ folder as:
